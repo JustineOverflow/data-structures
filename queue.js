@@ -1,5 +1,4 @@
-let myQueue;
-myQueue = {
+let myQueue = {
 
     length: 0,
     first: null,
