@@ -7,3 +7,10 @@ Implementation of the following interface:
 - pop
 - peek: item
 - length
+
+## Queue
+Implementation of the following interface:
+
+- enqueue(item)
+- dequeue
+- peek: item
