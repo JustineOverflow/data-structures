@@ -14,3 +14,8 @@ Implementation of the following interface:
 - enqueue(item)
 - dequeue
 - peek: item
+
+## Binary Search tree
+Implementation of the following interface:
+
+- insert(item)
