@@ -1,5 +1,12 @@
 # Data structures
 
+## Linked List 
+Implementation of the following interface:
+
+- add
+- get
+- remove
+
 ## Stack
 Implementation of the following interface:
 
@@ -15,7 +22,17 @@ Implementation of the following interface:
 - dequeue
 - peek: item
 
+## Hash maps
+Implementation of the following interface:
+
+- put
+- remove
+- get
+
 ## Binary Search tree
 Implementation of the following interface:
 
 - insert(item)
+
+## Insertion sort, selection sort & bubble sort
+
