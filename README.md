@@ -1,4 +1,4 @@
-# Data structures
+# Data structures & algorithms
 
 ## Linked List 
 Implementation of the following interface:
@@ -34,5 +34,5 @@ Implementation of the following interface:
 
 - insert(item)
 
-## Insertion sort, selection sort & bubble sort
+### Insertion sort, selection sort & bubble sort
 
