@@ -55,7 +55,7 @@ let LinkedList = function () {
             let i = 0;
             while (node) {
                 if (i === index) {
-                    return node;
+                    return node.item;
                 }
                 i++;
                 node = node.next;
@@ -68,12 +68,12 @@ let LinkedList = function () {
 
 let HashMap = function () {
 
+    LinkedList();
+
     let newHashMap = {
-        data: Array(10),
+        data: Array(3),
 
         put: function (key, value) {
-
-            let list;
 
             //creating an ID
 
@@ -83,16 +83,28 @@ let HashMap = function () {
                 id += ascii;
             }
             let index = id % 10;
+            console.log(`${key}: ${id} - ${index}`);
 
             // adding to the map
-            if (this.data[index] === undefined) {
+
+            if (this.data[index] !== undefined) {
+
+                let i = 0;
+                let item = this.data[index].get(i);
+                let thisKey = item.key;
+
+                while (thisKey !== key || item < this.data[index].length) {
+
+                    // case of a same key
+                    if (thisKey === key) {
+                        item.value = value;
+                    } else {
+                        this.data[index].add({key: key, value: value})
+                    }
+                }
+            } else if (this.data[index] === undefined) {
                 this.data[index] = LinkedList();
-                this.data[index].add({key, value})
-
-            } else {
-
-                // case of same key
-
+                this.data[index].add({key: key, value: value});
             }
         }
     };
@@ -100,5 +112,11 @@ let HashMap = function () {
 };
 
 let map = HashMap();
-map.put('E14', 'Javi');
-console.log(map);
+//map.put('E14', 'Javi');
+map.put('E13', 'Justine');
+map.put('A12', 'Laurent');
+//map.put('A12', 'Jaime');
+map.put('A21', 'Claire');
+map.put('A21', 'Claire');
+console.log(JSON.stringify(map));
+
