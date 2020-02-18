@@ -90,16 +90,13 @@ let HashMap = function () {
             if (this.data[index] !== undefined) {
 
                 let i = 0;
-                let item = this.data[index].get(i);
-                let thisKey = item.key;
+                while (i < this.data[index].length && this.data[index].get(i).key !== key) i += 1;
 
-                while (thisKey !== key || item < this.data[index].length) {
-
-                    // case of a same key
-                    if (thisKey === key) {
-                        item.value = value;
-                    } else {
-                        this.data[index].add({key: key, value: value})
+                if (i === this.data[index].length) {
+                    this.data[index].add({key: key, value: value});
+                } else {
+                    if (this.data[index].get(i).key === key) {
+                        this.data[index].get(i).value = value;
                     }
                 }
             } else if (this.data[index] === undefined) {
@@ -112,11 +109,8 @@ let HashMap = function () {
 };
 
 let map = HashMap();
-//map.put('E14', 'Javi');
-map.put('E13', 'Justine');
-map.put('A12', 'Laurent');
-//map.put('A12', 'Jaime');
-map.put('A21', 'Claire');
-map.put('A21', 'Claire');
+map.put('E13', 'Javascript');
+map.put('A12', 'Data Structure');
+map.put('A21', 'Coding');
+map.put('A21', 'Coding');
 console.log(JSON.stringify(map));
-
