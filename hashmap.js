@@ -68,49 +68,76 @@ let LinkedList = function () {
 
 let HashMap = function () {
 
-    LinkedList();
+        LinkedList();
 
-    let newHashMap = {
-        data: Array(3),
+        let newHashMap = {
+            data: Array(3),
 
-        put: function (key, value) {
+            put: function (key, value) {
 
-            //creating an ID
+                //creating an ID
 
-            let id = 0;
-            for (let i = 0; i < key.length; i++) {
-                let ascii = key.charCodeAt(i);
-                id += ascii;
-            }
-            let index = id % 10;
-            console.log(`${key}: ${id} - ${index}`);
+                let id = 0;
+                for (let i = 0; i < key.length; i++) {
+                    let ascii = key.charCodeAt(i);
+                    id += ascii;
+                }
+                let index = id % 10;
+                console.log(`${key}: ${id} - ${index}`);
 
-            // adding to the map
+                // adding to the map
 
-            if (this.data[index] !== undefined) {
+                if (this.data[index] !== undefined) {
 
-                let i = 0;
-                while (i < this.data[index].length && this.data[index].get(i).key !== key) i += 1;
+                    let i = 0;
+                    while (i < this.data[index].length && this.data[index].get(i).key !== key) i += 1;
 
-                if (i === this.data[index].length) {
+                    if (i === this.data[index].length) {
+                        this.data[index].add({key: key, value: value});
+                    } else {
+                        if (this.data[index].get(i).key === key) {
+                            this.data[index].get(i).value = value;
+                        }
+                    }
+                } else if (this.data[index] === undefined) {
+                    this.data[index] = LinkedList();
                     this.data[index].add({key: key, value: value});
+                }
+            },
+
+            delete: function (key) {
+
+                let id = 0;
+                for (let i = 0; i < key.length; i++) {
+                    let ascii = key.charCodeAt(i);
+                    id += ascii;
+                }
+                let index = id % 10;
+
+                if (this.data[index] === undefined) {
+                    return 'Unexisting key!'
                 } else {
-                    if (this.data[index].get(i).key === key) {
-                        this.data[index].get(i).value = value;
+
+                    let idx = 0;
+                    while (key !== this.data[index].get(idx).key && idx < this.data[index].length) idx += 1;
+
+                    if (idx < this.data[index].length) {
+                        return 'Unexisting key!'
+                    } else {
+                        this.data[index].remove(idx);
                     }
                 }
-            } else if (this.data[index] === undefined) {
-                this.data[index] = LinkedList();
-                this.data[index].add({key: key, value: value});
             }
-        }
-    };
-    return newHashMap;
-};
+        };
+        return newHashMap;
+    }
+;
 
 let map = HashMap();
 map.put('E13', 'Javascript');
 map.put('A12', 'Data Structure');
 map.put('A21', 'Coding');
 map.put('A21', 'Coding');
+map.delete('A12');
+map.delete('A12');
 console.log(JSON.stringify(map));
