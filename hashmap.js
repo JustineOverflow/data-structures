@@ -66,6 +66,17 @@ let LinkedList = function () {
     return list;
 };
 
+let hash = function (key) {
+    let id = 0;
+    for (let i = 0; i < key.length; i++) {
+        let ascii = key.charCodeAt(i);
+        id += ascii;
+    }
+    let index = id % 10;
+    console.log(`${key}: ${id} - ${index}`);
+    return index;
+};
+
 let HashMap = function () {
 
         LinkedList();
@@ -76,14 +87,7 @@ let HashMap = function () {
             put: function (key, value) {
 
                 //creating an ID
-
-                let id = 0;
-                for (let i = 0; i < key.length; i++) {
-                    let ascii = key.charCodeAt(i);
-                    id += ascii;
-                }
-                let index = id % 10;
-                console.log(`${key}: ${id} - ${index}`);
+                let index = hash(key);
 
                 // adding to the map
 
@@ -107,12 +111,7 @@ let HashMap = function () {
 
             delete: function (key) {
 
-                let id = 0;
-                for (let i = 0; i < key.length; i++) {
-                    let ascii = key.charCodeAt(i);
-                    id += ascii;
-                }
-                let index = id % 10;
+               let index = hash(key);
 
                 if (this.data[index] === undefined) {
                     return 'Unexisting key!'
