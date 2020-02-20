@@ -1,4 +1,4 @@
-# Data structures & algorithms
+# Data structures & algorithms (for learning purposes)
 
 ## Linked List 
 Implementation of the following interface:
@@ -26,8 +26,7 @@ Implementation of the following interface:
 Implementation of the following interface:
 
 - put
-- remove
-- get
+- delete
 
 ## Binary Search tree
 Implementation of the following interface:
@@ -35,4 +34,5 @@ Implementation of the following interface:
 - insert(item)
 
 ### Insertion sort, selection sort & bubble sort
+
 
